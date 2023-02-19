@@ -26,7 +26,12 @@ const ContactForm = ({onSubmit}) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    onSubmit({name, number, id: nanoid()});  
+    onSubmit({
+      name, 
+      number, 
+      id: nanoid()}); 
+
+    // onSubmit({name, number}); 
     
     setName('');
     setNumber('');
