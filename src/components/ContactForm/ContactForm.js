@@ -1,6 +1,6 @@
 import { useState } from "react";
 import css from "./ContactForm.module.css";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 
 const ContactForm = ({onSubmit}) => {
@@ -26,12 +26,13 @@ const ContactForm = ({onSubmit}) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    onSubmit({
-      name, 
-      number, 
-      id: nanoid()}); 
+    // onSubmit({
+    //   name, 
+    //   number, 
+    //   id: nanoid()
+    // }); 
 
-    // onSubmit({name, number}); 
+    onSubmit({name, number}); 
     
     setName('');
     setNumber('');

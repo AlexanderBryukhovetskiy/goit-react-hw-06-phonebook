@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const contactsInitialState = JSON.parse(window.localStorage.getItem('contacts')) ?? [];
 
@@ -12,12 +12,14 @@ const contactsSlice = createSlice( {
       reducer(state, action) {
         state.push(action.payload);
       },
-      preload (id, name, number) {
+      prepare (name, number) {
         return {
-          name,
-          number,
-          id
-        };
+          payload:{
+            name,
+            number,
+            id: nanoid(),
+          },
+        }
       },
     },
 
