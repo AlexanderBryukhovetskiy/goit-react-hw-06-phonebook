@@ -10,8 +10,6 @@
 // npx create-react-app my-app --template redux
 
 
-
-import { useState, useEffect }  from "react";
 import css from "./App.module.css";
 import Container from "../Container";
 import ContactForm from "components/ContactForm";
@@ -19,25 +17,7 @@ import  ContactList  from "../ContactList";
 import Filter from "../Filter";
 
 const App = () => {
-  const [filter, setFilter] = useState('');
   
-  // const onSubmitHandler = newContact => { 
-  //   const isUnique = contacts.filter( contactInStorage => 
-  //     contactInStorage.name.toLowerCase() === newContact.name.toLowerCase());
-    
-  //   if (isUnique.length > 0) {
-  //     return alert (`${newContact.name} is already in contacts.`);
-  //   }
-  //   else {
-  //     setContacts( [...contacts, newContact] ); 
-  //   }
-  // }
-
-  // const onHandleFilter = event => {
-  //   const value =  event.currentTarget.value;
-  //   setFilter(value);                             //-------------CHANGE !!!
-  // };
-
   // const searchName = () => {
   //   const searchingName = filter.toLowerCase();
 
@@ -48,9 +28,6 @@ const App = () => {
   //   return filteredContacts;
   // };
 
-  // const deleteContact = id => { 
-  //     setContacts( contacts.filter( contact => contact.id !== id) );
-  // };
 
   return (  
       <Container>

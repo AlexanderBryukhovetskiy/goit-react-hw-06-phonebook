@@ -1,16 +1,19 @@
 import React from "react";
 import css from "./Filter.module.css";
-// import PropTypes from "prop-types";
+import { filterChange } from "redux/filterSlice";
+import { useDispatch } from "react-redux";
 
 
-const Filter = ( { valueFilter, onChangeFilter } ) => {
+const Filter = () => {
+
+  const dispatch = useDispatch();
+
   return (
     <div className={css.searchInput}>
       <label>Find contact by name
         <input
         type="text"
-        onChange={onChangeFilter}
-        value={valueFilter}
+        onChange={dispatch(filterChange)}
         />
       </label>
     </div>

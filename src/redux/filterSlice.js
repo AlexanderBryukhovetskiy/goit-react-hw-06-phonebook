@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const filterInitialState = JSON.parse(window.localStorage.getItem('filter')) ?? '';
+
 const filterSlice = createSlice({
   name: "filter",
   
