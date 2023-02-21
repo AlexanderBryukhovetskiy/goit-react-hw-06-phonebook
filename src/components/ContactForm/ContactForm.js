@@ -8,6 +8,8 @@ const ContactForm = () => {
 
   const dispatch = useDispatch();
 
+  console.log("contactsInitialState before addContact:", contactsInitialState);
+
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -31,7 +33,7 @@ const ContactForm = () => {
         id: nanoid()
       }));
     }
-    
+    console.log('contactsInitialState after addContact:', contactsInitialState);
     form.reset();
   }
 
