@@ -13,7 +13,7 @@ const Filter = () => {
       <label>Find contact by name
         <input
         type="text"
-        onChange={dispatch(filterChange)}
+        onChange={dispatch(() => filterChange)}
         />
       </label>
     </div>

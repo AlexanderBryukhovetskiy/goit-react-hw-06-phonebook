@@ -18,36 +18,15 @@ import Filter from "../Filter";
 
 const App = () => {
   
-  // const searchName = () => {
-  //   const searchingName = filter.toLowerCase();
-
-  //   const filteredContacts = contacts.filter( contact => (
-  //     contact.name.toLowerCase().includes(searchingName))
-  //   );
-
-  //   return filteredContacts;
-  // };
-
 
   return (  
       <Container>
         <div className={css.phoneBookContainer}>
           <h1 className={css.title}>Phonebook</h1>
-          <ContactForm 
-          // onSubmit={onSubmitHandler}
-          />
+          <ContactForm/>
         </div>
 
         <h2 className={css.title}>Contacts</h2> 
-{/* 
-        <Filter 
-        valueFilter={filter} 
-        onChangeFilter={onHandleFilter}
-        />  
-          
-        { contacts.length > 0 && 
-        (<ContactList contacts={searchName()} onBtnClick={deleteContact}/>)}   */}
-
         <Filter/>
         <ContactList/>
       </Container>
