@@ -22,7 +22,7 @@ const ContactList = () => {
       contact => contact.name.toLowerCase().includes(searchingName));
 
     return <ul className={css.list}>
-      {filteredContacts.map( ({ id, name, number} = contact)  => (  
+      {filteredContacts.map( ({ id, name, number })  => (  
         
         <li key={id} className={css.listItem}>
           <p className={css.contactName}>{name} : </p>
