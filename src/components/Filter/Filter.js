@@ -9,8 +9,14 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const handleChange = (event) =>{
-    console.log(event.currentTarget.value);
-    dispatch(filterChange(event.currentTarget.value));
+    console.log("event.currentTarget.value in Filter:", event.currentTarget.value);
+
+    const filterValue = event.currentTarget.value.trim();
+    console.log("filterValue :" , filterValue);
+
+    if (filterValue) {
+      dispatch(filterChange(filterValue));
+    };
   }
 
   return (
