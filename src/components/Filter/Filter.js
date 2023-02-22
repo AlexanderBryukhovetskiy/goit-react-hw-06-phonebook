@@ -8,22 +8,22 @@ const Filter = () => {
 
   const dispatch = useDispatch();
 
+  const handleChange = (event) =>{
+    console.log(event.currentTarget.value);
+    dispatch(filterChange(event.currentTarget.value));
+  }
+
   return (
     <div className={css.searchInput}>
       <label>Find contact by name
         <input
         type="text"
-        onChange={dispatch(() => filterChange)}
+        onChange={handleChange}
         />
       </label>
     </div>
   )
 }
-
-// Filter.propTypes = {
-//   valueFilter: PropTypes.string.isRequired,
-//   onChangeFilter: PropTypes.func.isRequired
-// };
 
 export default Filter;
 

@@ -1,14 +1,16 @@
 import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addContact, contactsInitialState } from "redux/contactsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { addContact } from "redux/contactsSlice";
 import { nanoid } from "@reduxjs/toolkit";
 
 
 const ContactForm = () => {
 
+  const state = useSelector(state => state.contacts);
+
   const dispatch = useDispatch();
 
-  console.log("contactsInitialState before addContact:", contactsInitialState);
+  console.log("contactsInitialState before addContact:", state);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -17,10 +19,10 @@ const ContactForm = () => {
     const name = form.elements.name.value; 
     const number = form.elements.number.value;
 
-    console.log("name : ", name);
-    console.log("number : ", number);
+    // console.log("name : ", name);
+    // console.log("number : ", number);
 
-    const isUnique = contactsInitialState.filter(  
+    const isUnique = state.filter(  
       savedContact => savedContact.name.toLowerCase() === name.toLowerCase());
     
     if (isUnique.length > 0) {
@@ -33,7 +35,7 @@ const ContactForm = () => {
         id: nanoid()
       }));
     }
-    console.log('contactsInitialState after addContact:', contactsInitialState);
+    console.log('contacts after addContact:', state);
     form.reset();
   }
 

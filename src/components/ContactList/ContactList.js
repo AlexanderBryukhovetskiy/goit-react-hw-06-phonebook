@@ -1,25 +1,28 @@
 import React from "react";
 import css from "./ContactList.module.css";
-import { useDispatch } from "react-redux";
-import { contactsInitialState, deleteContact } from "redux/contactsSlice";
-import { filterInitialState } from "redux/filterSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteContact } from "redux/contactsSlice";
 
 
 const ContactList = () => {
 
+  const contacts = useSelector( state => state.contacts);
+  const filter = useSelector( state => state.filter);
+
+  console.log("contacts in ContactList : ", contacts);
+  console.log("filter in ContactList : ", filter);
+
   const dispatch = useDispatch();
-  // const handleDelete = () => dispatch(deleteContact(contact.id));
 
-  if (contactsInitialState.length > 0) {
+  if (contacts.length > 0) {
 
-    //  передати правильно значення фільтра зі стейта:
-    const searchingName = filterInitialState.trim().toLowerCase();  
+    const searchingName = filter.trim().toLowerCase();  
 
-    const filteredContacts = contactsInitialState.filter( 
+    const filteredContacts = contacts.filter( 
       contact => contact.name.toLowerCase().includes(searchingName));
 
     return <ul className={css.list}>
-      {filteredContacts.map( ({ id, name, number})  => (  
+      {filteredContacts.map( ({ id, name, number} = contact)  => (  
         
         <li key={id} className={css.listItem}>
           <p className={css.contactName}>{name} : </p>
@@ -27,7 +30,12 @@ const ContactList = () => {
         
           <button type="button" className={css.deleteBtn}
 
-            onClick={() => dispatch(deleteContact(id))}      // NOT WORK !?
+            onClick={() => {
+            console.log("id: ", id);
+            console.log("dispatch(deleteContact(id)) :", dispatch(deleteContact(id)));
+
+            dispatch(deleteContact(id))}  
+              }    // NOT WORK !?
 
           >Delete
           </button>
