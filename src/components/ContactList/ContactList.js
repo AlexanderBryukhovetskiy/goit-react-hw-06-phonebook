@@ -2,23 +2,25 @@ import React from "react";
 import css from "./ContactList.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteContact } from "redux/contactsSlice";
+import { getContacts, getFilter } from "redux/selectors";
+
 
 
 const ContactList = () => {
 
-  const contacts = useSelector( state => state.contacts);
-  const filter = useSelector( state => state.filter);
+  const contactsList = useSelector( getContacts );
+  const filterValue = useSelector( getFilter) ;
 
-  console.log("contacts in ContactList : ", contacts);
-  console.log("filter in ContactList : ", filter);
+  console.log("contacts in ContactList : ", contactsList);
+  console.log("++++++++++++++++++++++ : ", filterValue);
 
   const dispatch = useDispatch();
 
-  if (contacts.length > 0) {
+  if (contactsList?.length > 0) {
 
-    const searchingName = filter.trim().toLowerCase();  
+    const searchingName = filterValue.trim().toLowerCase();  
 
-    const filteredContacts = contacts.filter( 
+    const filteredContacts = contactsList.filter( 
       contact => contact.name.toLowerCase().includes(searchingName));
 
     return <ul className={css.list}>
@@ -29,14 +31,7 @@ const ContactList = () => {
           <p className={css.contactNumber}>{number}</p>
         
           <button type="button" className={css.deleteBtn}
-
-            onClick={() => {
-            console.log("id: ", id);
-            console.log("dispatch(deleteContact(id)) :", dispatch(deleteContact(id)));
-
-            dispatch(deleteContact(id))}  
-              }    // NOT WORK !?
-
+            onClick={() => {dispatch(deleteContact(id))} }  
           >Delete
           </button>
         </li>
